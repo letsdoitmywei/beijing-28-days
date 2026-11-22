@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-70Zn7pzHvf9qPvr+r4vizZcZAhxenXgMMX+4Wm/nFHE=' 'sha256-zKZblUCwcXzwlW8471+YAyndrfpedPLF3Ro4JW++x5o='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-70Zn7pzHvf9qPvr+r4vizZcZAhxenXgMMX+4Wm/nFHE=' 'sha256-YpbiY/huV0nNDe1sg31E57d4cOG+enU25owwpSs9buc='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Beijing. 28 days.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap">
@@ -207,6 +207,20 @@ sup a{color:inherit;text-decoration:none;font-size:.6em;margin-left:1px}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+.menubtn{flex:none;white-space:nowrap}
+@media(max-width:480px){.gnav .in{padding:0 16px;gap:12px}.gnav b{display:none}.menubtn{margin-left:0;margin-right:auto}}
+.itip{display:none}.info:hover .itip,.info:focus .itip,.info:focus-within .itip,.info.open .itip{display:block;opacity:1}
+@media(hover:none){.info:hover .itip,.info:focus .itip,.info:focus-within .itip{display:none}.info.open .itip{display:block;opacity:1}}
+@media(max-width:1100px){.gnav nav{max-height:calc(100vh - 44px);max-height:calc(100dvh - 44px);overflow-y:auto;overscroll-behavior:contain}}
+.gnav .seg button,.pillbtn,.menubtn,.link{position:relative}
+.gnav .seg button{min-width:44px;flex:none;box-sizing:border-box}.gnav .seg button::before{content:"";position:absolute;inset:-10px -1px}
+.pillbtn::before{content:"";position:absolute;inset:-10px -6px}
+.menubtn::before{content:"";position:absolute;inset:-8px 0}
+.sw::before{content:"";position:absolute;inset:-7px -4px}
+.info::before{content:"";position:absolute;inset:-14px}.info[aria-describedby=style-tip]::before{inset:-8px}
+.link::before{content:"";position:absolute;inset:-10px -6px}
+@media(pointer:coarse){.seg button,.seg.lg button{min-height:44px}input[type=range]{min-height:44px}.chip{padding:12px 16px}.chips{gap:12px}}
+.seg button:active,.chip:active,.pillbtn:active,.menubtn:active,.sum:active,.link:active,.row:active{opacity:.6}
 </style>
 </head>
 <body>
@@ -495,7 +509,8 @@ const scrub = e => { const r = svg.getBoundingClientRect(), bw = +svg.dataset.bw
 svg.addEventListener('pointermove', scrub); svg.addEventListener('pointerdown', scrub);
 const unpick = () => { pick = -1; selText(); chart(); tipHide(); };
 svg.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') unpick(); });
-document.addEventListener('pointerdown', e => { if (pick >= 0 && !svg.contains(e.target)) unpick(); });
+document.addEventListener('pointerdown', e => { if (pick >= 0 && !e.composedPath().includes(svg)) unpick(); });
+svg.addEventListener('pointercancel', () => { if (pick >= 0) unpick(); });
 $('sums').addEventListener('click', e => { const b = e.target.closest('.sum'); if (!b) return; mode = mode === b.dataset.m ? '' : b.dataset.m; daily(); });
 $('budget').addEventListener('input', e => { st.budget = +e.target.value; save(); daily(); });
 $$('#daily .seg button').forEach(b => b.onclick = () => { st.sort = b.dataset.sort; save(); daily(); });
@@ -598,7 +613,7 @@ function statics() { $$('.mc').forEach(e => e.textContent = m(e.dataset.fly ? fl
 function oneoffs() {
   $('oo').innerHTML = D.oneoffs.map(([n, d, c, st]) => `<div class="card"><span class="st" style="color:${st === 'Bought' ? 'var(--ink)' : st === 'Refunded' ? 'var(--okt)' : 'var(--link)'}">${t(st)}</span><div class="v num">${m(c)}</div><p style="font-size:17px;font-weight:600">${t(n)}</p><p class="grey" style="font-size:14px">${t(d)}</p></div>`).join('');
 }
-const placeTip = el => { const t = el.querySelector('.itip'); if (!t) return; t.style.marginLeft = '0px'; const r = t.getBoundingClientRect(); const d = r.right > innerWidth - 12 ? innerWidth - 12 - r.right : r.left < 12 ? 12 - r.left : 0; t.style.marginLeft = d + 'px'; };
+const placeTip = el => { const t = el.querySelector('.itip'); if (!t) return; t.style.marginLeft = '0px'; const r = t.getBoundingClientRect(); const vw = document.documentElement.clientWidth; const d = r.right > vw - 12 ? vw - 12 - r.right : r.left < 12 ? 12 - r.left : 0; t.style.marginLeft = d + 'px'; };
 ['pointerenter', 'focusin'].forEach(ev => document.addEventListener(ev, e => { const i = e.target.closest && e.target.closest('.info'); if (i) placeTip(i); }, true));
 const mb = $('menubtn'), nv = $('secnav');
 const setMenu = o => { nv.classList.toggle('open', o); mb.setAttribute('aria-expanded', o); };
@@ -606,6 +621,8 @@ mb.onclick = e => { e.stopPropagation(); setMenu(!nv.classList.contains('open'))
 nv.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
 document.addEventListener('click', e => { if (!e.target.closest('.gnav')) setMenu(false); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+document.addEventListener('click', e => { const i = e.target.closest('.info'); $$('.info.open').forEach(x => { if (x !== i) { x.classList.remove('open'); x.blur(); } }); if (i) { if (i.classList.toggle('open')) placeTip(i); else i.blur(); } });
+document.addEventListener('touchstart', () => {}, { passive: true });
 function all() { oneoffs(); statics(); hero(); bento(); daily(); plan(); fees(); food(); apps(); table(); }
 $$('.hero .seg button').forEach(b => b.onclick = () => {
   if (st.cur === b.dataset.cur) return;
