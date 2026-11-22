@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beijing. 28 days.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap">
+<style>
+/* VOICE: an Apple product page for a trip. Confident two-part headlines, one idea per section, restraint.
+   IDEA: the trip is the "product"; its numbers are the specs, shown as big typographic moments.
+   PICTURE: the live total set huge in the hero, then a gapped storage-style bar of where the money went.
+   COLOUR and TYPE: apple.com values — #fff / #f5f5f7 / #000 grounds, #1d1d1f ink, #6e6e73 greys, #0071e3 actions; SF Pro via system stack, Inter elsewhere.
+   LAYOUT: translucent 44px nav, 980px text column, 1200px tile grid, 30px-radius tiles, generous section spacing, numbered footnotes. */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#000000);--alt:light-dark(#f5f5f7,#101011);--tile:light-dark(#ffffff,#1c1c1e);--tile2:light-dark(#f5f5f7,#1c1c1e);
+  --ink:light-dark(#1d1d1f,#f5f5f7);--grey:light-dark(#6e6e73,#a1a1a6);--grey2:light-dark(#6e6e73,#a1a1a6);--hair:light-dark(#d2d2d7,#424245);
+  --blue:#0071e3;--link:light-dark(#0066cc,#2997ff);--over:light-dark(#bf4800,#ff9f0a);--green:#34c759;--okt:light-dark(#248a3d,#30d158);--fill:light-dark(rgba(118,118,128,.12),rgba(118,118,128,.24));
+  --sys:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Helvetica Neue",Helvetica,Arial,"PingFang SC","Noto Sans SC",sans-serif;
+  --cjk:"PingFang SC","Noto Sans SC",sans-serif;--ease:cubic-bezier(.4,0,.6,1)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:60px;font-size:106.25%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.47059 var(--sys);letter-spacing:-.022em;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+.cjk{font-family:var(--cjk)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.grey{color:var(--grey)}
+button{font:inherit;color:inherit}
+
+/* Nav */
+.gnav{position:sticky;top:0;z-index:10;height:44px;background:light-dark(rgba(250,250,252,.8),rgba(22,22,23,.8));backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid light-dark(rgba(0,0,0,.08),rgba(255,255,255,.1))}
+.gnav .in{max-width:1200px;margin:0 auto;height:100%;padding:0 22px;display:flex;align-items:center;gap:22px}
+.gnav b{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:none}
+.gnav nav{display:flex;gap:18px;overflow-x:auto;flex:1;scrollbar-width:none}
+.gnav nav a{flex:none;font-size:12px;letter-spacing:-.01em;color:var(--ink);opacity:.8;text-decoration:none;padding:12px 0}
+.gnav nav a:hover{opacity:1}
+.gnav .seg{flex:none}.gnav .seg button{min-height:26px;padding:0 10px;font-size:12px}
+.pillbtn{all:unset;cursor:pointer;background:var(--blue);color:#fff;border-radius:980px;padding:3px 11px;font-size:12px;font-weight:400;flex:none;line-height:1.6}
+.menubtn{all:unset;cursor:pointer;display:none;font-size:12px;padding:6px 10px;border-radius:980px;margin-left:auto;color:var(--ink)}
+.menubtn:focus-visible{outline:3px solid #0071e3}
+.menubtn::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 3px 7px;transition:transform .24s var(--ease)}
+.menubtn[aria-expanded=true]::after{transform:rotate(-135deg);margin-bottom:-1px}
+@media(max-width:1100px){
+  .gnav nav{display:none;position:absolute;top:44px;left:0;right:0;flex-direction:column;gap:0;padding:8px 22px 18px;background:light-dark(rgba(250,250,252,.97),rgba(22,22,23,.97));backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid light-dark(rgba(0,0,0,.08),rgba(255,255,255,.1))}
+  .gnav nav.open{display:flex}
+  .gnav nav a{font-size:17px;padding:10px 0;opacity:1;border-top:1px solid light-dark(rgba(0,0,0,.06),rgba(255,255,255,.08))}
+  .gnav nav a:first-child{border-top:0}
+  .menubtn{display:inline-flex;align-items:center}
+}
+
+/* Sections */
+section{padding:clamp(80px,11vw,150px) 22px}
+.alt{background:var(--alt)}
+.dark{background:#000;color:#f5f5f7;--ink:#f5f5f7;--grey:#a1a1a6;--tile:#1c1c1e;--tile2:#1c1c1e;--hair:#424245;--fill:rgba(118,118,128,.24);--link:#2997ff}
+.col{max-width:980px;margin:0 auto}
+.wide{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:clamp(19px,2.2vw,24px);font-weight:600;letter-spacing:.009em;line-height:1.17;margin-bottom:8px;color:var(--over)}
+.dark .eyebrow{color:#ff9f0a}
+.h2{font-size:clamp(32px,5vw,56px);line-height:1.07143;font-weight:600;letter-spacing:-.005em;text-wrap:balance}
+.h2 span{color:var(--grey)}
+.intro{font-size:clamp(19px,1.9vw,21px);line-height:1.381;color:var(--grey);max-width:640px;margin-top:18px}
+.intro b{color:var(--ink);font-weight:600}
+.head{margin-bottom:clamp(36px,5vw,64px)}
+.center{text-align:center}.center .intro{margin-inline:auto}
+
+/* Hero */
+.hero{padding-top:clamp(56px,8vw,110px);padding-bottom:clamp(64px,8vw,110px);text-align:center}
+.hero .name{font-size:clamp(21px,2.4vw,28px);font-weight:600;letter-spacing:.007em}
+.hero .big{font-size:clamp(64px,13vw,150px);font-weight:700;letter-spacing:-.03em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.hero .tag{font-size:clamp(24px,3.4vw,40px);font-weight:600;line-height:1.1;letter-spacing:0;text-wrap:balance}
+.hero .tag span{color:var(--grey)}
+.hero .sub{font-size:clamp(17px,1.6vw,21px);color:var(--grey);margin-top:14px}
+.hero-photo{max-width:1200px;margin:clamp(36px,5vw,60px) auto 0;border-radius:30px;overflow:hidden;aspect-ratio:16/8;background:var(--alt)}
+.hero-photo img,.hero-photo video{width:100%;height:100%;object-fit:cover;display:block}
+.controls{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px;align-items:center}
+
+/* Segmented control */
+.seg{display:inline-flex;background:var(--fill);border-radius:9px;padding:2px;gap:0}
+.seg button{all:unset;cursor:pointer;white-space:nowrap;min-height:32px;padding:0 16px;border-radius:7px;font-size:14px;font-weight:500;letter-spacing:-.01em;display:inline-flex;align-items:center;justify-content:center;flex:1;transition:background .24s var(--ease)}
+.seg button[aria-pressed=true]{background:light-dark(#fff,#636366);box-shadow:0 3px 8px rgba(0,0,0,.12),0 3px 1px rgba(0,0,0,.04)}
+.dark .seg button[aria-pressed=true]{background:#636366}
+.seg.lg button{min-height:40px;font-size:15px;padding:0 20px}
+.seg button:focus-visible,.sw:focus-visible,.row:focus-visible,input:focus-visible,.link:focus-visible,.pillbtn:focus-visible{outline:3px solid #0071e3;outline-offset:2px}
+
+/* Bento */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
+.tile{background:var(--tile);border-radius:30px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:220px;overflow:hidden;position:relative}
+.alt .tile{background:var(--tile)}
+.t2{grid-column:span 2}.t3{grid-column:span 3}.t4{grid-column:span 4}.t6{grid-column:span 6}
+.tile .k{margin-bottom:auto;font-size:clamp(17px,1.5vw,21px);font-weight:600;line-height:1.24;text-wrap:balance}
+.tile .k span{color:var(--grey);font-weight:600}
+.tile .v{font-size:clamp(48px,6vw,80px);font-weight:700;letter-spacing:-.025em;line-height:1}
+.t2 .v{font-size:clamp(40px,4.4vw,64px)}
+.tile .v small{font-size:.4em;font-weight:600;letter-spacing:0;margin-left:4px}
+.tile .c{font-size:14px;color:var(--grey);line-height:1.43}
+.tile.photo{padding:0;justify-content:end;color:#fff}
+.tile.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile.photo .cap{position:relative;padding:28px;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+@media(max-width:1068px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.t2,.t3,.t4{grid-column:span 1}.t6{grid-column:span 2}.tile{border-radius:25px}}
+@media(max-width:600px){.bento{grid-template-columns:1fr}.t2,.t3,.t4,.t6{grid-column:span 1}.tile{border-radius:20px;min-height:0;gap:36px}}
+
+/* Storage bar + inset list */
+.storage{display:flex;gap:3px;height:28px;margin:6px 0 10px}
+.storage div{border-radius:6px;transition:flex-grow .5s var(--ease)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--grey)}
+.leg span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:6px}
+.inset{background:var(--tile);border-radius:18px;overflow:hidden;margin-top:28px}
+.row{display:grid;grid-template-columns:12px minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:12px 18px;min-height:56px;border-top:1px solid var(--hair);cursor:pointer}
+.row:first-child{border-top:0}
+.row .dot{width:12px;height:12px;border-radius:50%;background:var(--c)}
+.row .t{font-size:17px}.row .t small{display:block;font-size:13px;color:var(--grey)}
+.row .a{text-align:right;font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap}.row .a small{display:block;font-size:13px;color:var(--grey)}
+.row.off .t,.row.off .a{opacity:.4}
+.row .nm{white-space:nowrap}
+.row .nm::after{content:"›";display:inline-block;margin-left:8px;color:var(--grey);transition:transform .24s var(--ease)}
+.row[aria-expanded=true] .nm::after{transform:rotate(90deg)}
+.drill{padding:4px 18px 14px 44px;border-top:0;background:var(--tile)}
+.drill .si{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding:7px 0;border-top:1px solid var(--hair);font-size:15px}
+.drill .si:first-child{border-top:0}
+.drill .si small{display:block;color:var(--grey);font-size:13px}
+.drill .si span:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.drill .si.rest{color:var(--grey)}
+.sw{all:unset;cursor:pointer;width:51px;height:31px;border-radius:16px;background:var(--fill);position:relative;transition:background .24s var(--ease);flex:none}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.15),0 3px 1px rgba(0,0,0,.06);transition:transform .24s var(--ease)}
+.sw[aria-checked=true]{background:var(--green)}.sw[aria-checked=true]::after{transform:translateX(20px)}
+.fxrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--grey)}
+.fxrow input{flex:1 1 220px}
+input[type=range]{accent-color:var(--blue);min-height:32px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.live{white-space:nowrap;font-size:clamp(48px,7vw,88px);font-weight:700;letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums}
+.livecap{font-size:17px;color:var(--grey);margin-top:8px}
+
+/* Chart */
+.card{background:var(--tile);border-radius:30px;padding:clamp(22px,3vw,36px)}
+@media(max-width:600px){.card{border-radius:20px}}
+.cardtop{display:flex;justify-content:space-between;align-items:start;gap:16px;flex-wrap:wrap}
+.sel .l{font-size:12px;font-weight:600;color:var(--grey);text-transform:uppercase;letter-spacing:.02em}
+.sel .v{font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.sel .d{font-size:14px;color:var(--grey)}
+.fig{position:relative;height:300px;margin-top:22px}.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;touch-action:pan-y}
+.fig text{fill:var(--grey2);font-size:12px;font-family:var(--sys)}
+.fig .g{stroke:var(--hair);stroke-width:1}
+.fig .b{fill:var(--blue);transition:opacity .2s var(--ease)}.fig .b.o{fill:var(--over)}.fig .b.dim{opacity:.25}
+.fig .bud{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 4}
+.fig .avg{stroke:var(--green);stroke-width:2}
+.tip{position:absolute;top:0;z-index:3;pointer-events:none;background:var(--tile);border:1px solid var(--hair);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:12px 14px;width:240px;font-size:13px;line-height:1.35;transition:opacity .15s var(--ease)}
+.tip[hidden]{display:block;opacity:0}
+.tip b{font-size:15px;display:block}.tip .h{color:var(--grey);margin-bottom:8px}
+.tip .r{display:flex;justify-content:space-between;gap:10px;padding:2px 0}.tip .r span:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:7px}
+.tip .r span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tip .bg{border-top:1px solid var(--hair);margin-top:8px;padding-top:8px;color:var(--grey)}
+.tip .bg span{color:var(--ink)}
+.info{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;font:600 11px/1 var(--sys);font-style:italic;cursor:help;margin-left:4px;vertical-align:1px;color:var(--grey)}
+.info:focus-visible{outline:3px solid #0071e3;outline-offset:2px}
+.itip{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:260px;max-width:80vw;background:#f5f5f7;color:#1d1d1f;font:400 13px/1.4 var(--sys);font-style:normal;letter-spacing:-.01em;padding:10px 12px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .15s var(--ease);z-index:5;text-align:left}
+.info:hover .itip,.info:focus .itip,.info:focus-within .itip{opacity:1}
+@media(max-width:600px){.itip{width:240px}}
+.oo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}@media(max-width:860px){.oo{grid-template-columns:1fr}}
+.oo .card{background:var(--tile2)}.oo .v{font-size:clamp(30px,3.2vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:10px 0 6px}
+.oo .st{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:980px;border:1px solid currentColor}
+.sums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.sum{all:unset;cursor:pointer;background:var(--tile2);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;border:2px solid transparent}
+.sum[aria-pressed=true]{border-color:var(--blue)}
+.sum .l{font-size:13px;color:var(--grey)}.sum .v{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.sums{grid-template-columns:1fr}}
+.budget{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--grey)}
+.budget input{flex:1 1 220px}.budget b{color:var(--ink);font-size:17px}
+
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.field>span{font-size:14px;color:var(--grey)}
+.field>span b{color:var(--ink);font-size:17px;font-weight:600}
+.switchrow{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--hair);font-size:17px}
+input[type=number],input[type=search]{font:17px var(--sys);letter-spacing:-.022em;min-height:52px;padding:0 16px;border-radius:12px;border:1px solid var(--hair);background:var(--tile);color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;cursor:pointer;background:var(--fill);border-radius:980px;padding:8px 14px;font-size:14px;min-height:20px}
+.chip:focus-visible{outline:3px solid #0071e3}
+.bars{display:flex;flex-direction:column;gap:16px}
+.bar .top{display:flex;justify-content:space-between;gap:12px;font-size:17px}
+.bar .top small{color:var(--grey);font-size:14px;margin-left:8px}
+.bar .tr{height:8px;border-radius:4px;background:var(--fill);margin-top:6px;overflow:hidden}
+.bar .fl{height:100%;border-radius:4px;background:var(--blue);transition:width .5s var(--ease)}
+.bar .fl.o{background:var(--over)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:734px){.duo{grid-template-columns:1fr}}
+.fee .v{font-size:clamp(30px,3.4vw,44px);overflow-wrap:anywhere;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.fee .v.ok{color:var(--okt)}.fee .v.no{color:var(--over)}
+.spec{display:flex;flex-direction:column}
+.spec div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--hair);font-size:17px}
+.spec div span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 10px;border-radius:980px;border:1px solid currentColor;margin:8px 0 18px}
+ol.tips{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;font-size:17px;max-width:760px}
+.list .it{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;padding:14px 0;border-top:1px solid var(--hair);align-items:baseline}
+.list .it .d{font-size:14px;color:var(--grey)}.list .it .w small{display:block;color:var(--grey);font-size:14px}
+.list .it .a{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.list .it .a small{display:block;color:var(--grey);font-size:13px}
+.link{all:unset;cursor:pointer;color:var(--link);font-size:17px}
+.link:hover{text-decoration:underline}
+.foot{font-size:12px;line-height:1.33337;color:var(--grey);letter-spacing:-.01em}
+.foot ol{padding-left:1.4em;display:flex;flex-direction:column;gap:8px;max-width:980px}
+.foot h3{font-size:12px;font-weight:600;margin:20px 0 8px;color:var(--ink)}
+.foot table{border-collapse:collapse;width:100%;max-width:980px}
+.foot td{padding:6px 8px 6px 0;border-top:1px solid var(--hair);vertical-align:top}
+sup a{color:inherit;text-decoration:none;font-size:.6em;margin-left:1px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="gnav"><div class="in">
+  <b>Beijing 28</b>
+  <nav aria-label="Sections" id="secnav"><a href="#highlights">Highlights</a><a href="#where">Where the expenses went</a><a href="#daily">Day by day</a><a href="#fees">Fee checker</a><a href="#food">What we ate</a><a href="#pay">Alipay or WeChat?</a><a href="#payments">The big ones</a><a href="#oneoffs">Kept separate</a></nav>
+  <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="secnav">Sections</button>
+  <div class="seg" id="lang" role="group" aria-label="Language"><button data-lang="en" lang="en">EN</button><button data-lang="zh" lang="zh-CN">中文</button></div>
+  <a class="pillbtn" href="#plan">Plan yours</a>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="name">Beijing. 28 days.</div>
+  <div class="big" id="h-total" aria-live="polite"></div>
+  <p class="tag">Everything in. <span>Flights and accommodation included.</span></p>
+  <p class="sub" id="h-sub"></p>
+  <p class="sub" style="font-size:14px;margin-top:6px">These are only my payments. A big thank-you to Zoe, my love, who generously covered some of the trip too.</p>
+  <div class="controls">
+    <div class="seg lg" role="group" aria-label="Currency"><button data-cur="MYR" aria-label="Ringgit" title="Ringgit" style="min-width:64px;font-size:17px;font-weight:600">RM</button><button data-cur="CNY" aria-label="Yuan" title="Yuan" style="min-width:64px;font-size:17px;font-weight:600">¥</button></div>
+  </div>
+  <div class="hero-photo" id="hero-photo" hidden></div>
+</section>
+
+<section class="alt" id="highlights" aria-label="Highlights" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)"><div class="wide">
+  <div class="bento" id="bento"></div>
+</div></section>
+
+<section id="where"><div class="col">
+  <div class="head reveal"><div class="eyebrow">Where the expenses went</div><h2 class="h2">Rent and food. <span>Half of everything.</span></h2>
+  <p class="intro">Tap a category to see where it went. Switch one off to see how it changes the trip total.</p></div>
+  <div class="split">
+    <div class="reveal"><div class="live" id="w-total"></div><div class="livecap" id="w-cap"></div></div>
+    <div class="reveal"><div class="storage" id="storage" aria-hidden="true"></div><div class="leg" id="leg"></div></div>
+  </div>
+  <div class="inset reveal" id="cats" role="list"></div>
+  <div class="fxrow reveal"><span>Exchange rate <b class="num" id="fx-v" style="color:var(--ink)"></b> per ¥1 <span class="info" tabindex="0" role="button" aria-label="About the exchange rate">i<span class="itip" role="tooltip">Ringgit uses a market rate of RM 0.61 per ¥1 for Oct–Nov 2026, adjustable above. Banks add a small markup; your card statement is the final word.</span></span></span><input type="range" id="fx" min="0.55" max="0.68" step="0.005" aria-label="Exchange rate"><button class="link" id="reset">Reset</button></div>
+</div></section>
+
+<section class="alt" id="daily"><div class="col">
+  <div class="head reveal"><div class="eyebrow">Day by day</div><h2 class="h2" id="d-h"></h2>
+  <p class="intro">Daily spend with rent left out. <span class="info" tabindex="0" role="button" aria-label="What daily spend leaves out">i<span class="itip" role="tooltip">Rent (<span class="mc" data-c="4326" data-d="0"></span>, paid at check-in) is left out of daily figures. Trip window: 25 Oct (transit at Chongqing) to 21 Nov (Beijing Capital airport).</span></span> Hover or tap a day to see where the money went.</p></div>
+  <div class="card reveal">
+    <div class="cardtop">
+      <div class="sel" id="sel"></div>
+      <div class="seg" role="group" aria-label="Order"><button data-sort="date">By date</button><button data-sort="amt">Biggest first</button></div>
+    </div>
+    <div class="fig" id="fig"><svg role="img" aria-label="Daily spend chart"></svg><div class="tip" id="tip" hidden aria-hidden="true"></div></div>
+    <div class="budget"><span>Daily budget <b class="num" id="b-v"></b></span><input type="range" id="budget" aria-label="Daily budget"></div>
+    <div class="sums" id="sums"></div>
+  </div>
+</div></section>
+
+<section class="dark" id="plan"><div class="col">
+  <div class="head reveal center"><div class="eyebrow">Plan yours</div><h2 class="h2">Your trip. <span>Our numbers.</span></h2>
+  <p class="intro">Built from what each day really cost us.</p></div>
+  <div class="split">
+    <div class="reveal">
+      <div class="field"><span>Days in Beijing <b class="num" id="p-days-v"></b></span><input type="range" id="p-days" min="3" max="60" value="14"></div>
+      <div class="field"><span>Sharing the apartment</span><div class="seg lg" id="p-ppl" role="group" aria-label="Travellers"><button data-v="1">Just me</button><button data-v="2">Two</button><button data-v="3">Three</button></div></div>
+      <div class="field"><span>Spending style <span class="info" tabindex="0" role="button" aria-label="How spending styles work" aria-describedby="style-tip">i<span class="itip" id="style-tip" role="tooltip">Thrifty is 0.7× our food, shopping and fun; Comfy is 1.4×, with 1.6× transport for more DiDi. Flights stay at what we paid: <span class="mc" data-c="0" data-d="2" data-fly="1"></span>.</span></span></span><div class="seg lg" id="p-style" role="group" aria-label="Spending style"><button data-v="0.7">Thrifty</button><button data-v="1">Like us</button><button data-v="1.4">Comfy</button></div></div>
+      <div class="switchrow"><span>Rent an apartment like ours</span><button class="sw" id="p-rent" role="switch" aria-label="Rent an apartment"></button></div>
+      <div class="switchrow"><span>Return flights from KL</span><button class="sw" id="p-fly" role="switch" aria-label="Return flights"></button></div>
+    </div>
+    <div class="card reveal" style="background:#1c1c1e">
+      <div class="sel"><div class="l">Estimated per person</div></div>
+      <div class="live" id="p-total" style="margin-top:6px;font-size:clamp(44px,5.4vw,72px)"></div>
+      <div class="livecap" id="p-sub"></div>
+      <div class="bars" id="p-bars" style="margin-top:28px"></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="fees"><div class="col">
+  <div class="head reveal"><div class="eyebrow">Fee checker</div><h2 class="h2">Foreign card fees. <span>Free up to <span class="mc" data-c="200" data-d="0"></span> a payment.</span></h2>
+  <p class="intro">Paying with a Malaysian card? Go over that in a single payment and Alipay adds 3%. WeChat Pay skips the 3% for cards added in the last 90 days, as long as you spend under <span class="mc" data-c="1000" data-d="0"></span> a day. Type an amount to check. <span class="info" tabindex="0" role="button" aria-label="About the card fees">i<span class="itip" role="tooltip">Alipay adds 3% to foreign-card payments over <span class="mc" data-c="200" data-d="0"></span>. WeChat gives first-time foreign cards 0% for 90 days on up to <span class="mc" data-c="1000" data-d="0"></span> a day; the promotion ends 31 Dec 2026. After that it works like Alipay.</span></span></p></div>
+  <div class="split">
+    <div class="reveal">
+      <div class="field"><span>One payment of (<span class="cu"></span>)</span><input type="number" id="f-amt" min="0" step="1" value="350" inputmode="decimal"></div>
+      <div class="chips" id="f-pre" style="margin:-8px 0 22px"></div>
+      <div class="switchrow"><span>WeChat card added in the last 90 days</span><button class="sw" id="f-new" role="switch" aria-label="New WeChat card" aria-checked="true"></button></div>
+    </div>
+    <div class="duo reveal">
+      <div class="card fee" style="background:var(--alt)"><div class="sel"><div class="l">Alipay</div></div><div class="v" id="f-ali"></div><p class="grey" id="f-ali-n" style="font-size:14px;margin-top:8px"></p></div>
+      <div class="card fee" style="background:var(--alt)"><div class="sel"><div class="l">WeChat Pay</div></div><div class="v" id="f-wx"></div><p class="grey" id="f-wx-n" style="font-size:14px;margin-top:8px"></p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt" id="food"><div class="col">
+  <div class="head reveal"><div class="eyebrow">What we ate</div><h2 class="h2">Skewers. Coffee. <span>More skewers.</span></h2>
+  <p class="intro" id="eat-i"></p></div>
+  <div class="card reveal">
+    <div class="cardtop" style="margin-bottom:24px"><div class="sel"><div class="l">Ranked by</div></div><div class="seg" role="group" aria-label="Rank by"><button data-kind="count">Most often</button><button data-kind="spend">Most spent</button></div></div>
+    <div class="bars" id="kinds"></div>
+    <p class="grey" style="font-size:12px;margin-top:18px">One payment can count twice. Beef noodles count as beef and as noodles.</p>
+  </div>
+</div></section>
+
+<section id="pay"><div class="col">
+  <div class="head reveal center"><div class="eyebrow">Alipay or WeChat?</div><h2 class="h2">Two apps. <span>Two jobs.</span></h2></div>
+  <div class="duo reveal" id="apps"></div>
+  <div class="reveal" style="margin-top:56px"><h3 style="font-size:24px;font-weight:600;margin-bottom:16px">What we'd tell a friend.</h3><ol class="tips" id="tips"></ol></div>
+</div></section>
+
+<section class="alt" id="payments"><div class="col">
+  <div class="head reveal"><div class="eyebrow">The big ones</div><h2 class="h2">The biggest payments. <span>Rent leads by far.</span></h2></div>
+  <div class="card reveal">
+    <div class="list" id="top"></div>
+  </div>
+</div></section>
+
+<section id="oneoffs"><div class="col">
+  <div class="head reveal"><div class="eyebrow">Kept separate</div><h2 class="h2">One-offs. <span>Not part of the trip total.</span></h2>
+  <p class="intro">Big payments that weren't day-to-day travel costs, so they stay out of every number above.</p></div>
+  <div class="oo reveal" id="oo"></div>
+</div></section>
+
+</main>
+
+<script id="data" type="application/json">{"days":28,"fx":0.61,
+"reconcile":{"raw_cny":19870.19,"excluded_or_refunded_cny":8926.92,"trip_cny":10943.27},
+"flights_myr":1240.63,
+"vpn_myr":47.0,
+"buckets":[["Accommodation","Apartment rent","28 days, paid up front",4326.0],["Food & drinks","Food & drinks","about 142/day",3986.33],["Shopping & souvenirs","Shopping","MUJI, souvenirs, gifts",750.48],["Transport","Transport","53 metro · 10 DiDi · 8 bus",561.07],["Attractions & tours","Attractions","Great Wall, parks",360.0],["Groceries & daily","Groceries","",353.39],["Electricity","Electricity","4 prepaid top-ups",330.0],["Phone & SIM","Phone","",150.0],["Wellness","Bathhouse","",126.0]],
+"dd":[[{"Electricity":150.0,"Food & drinks":55.0},"Electricity top-up",150.0,2],[{"Food & drinks":140.5,"Groceries & daily":62.68,"Phone & SIM":50.0},"北京傻四肉饼王四营店",83.0,8],[{"Groceries & daily":65.9,"Attractions & tours":30.0,"Transport":14.0,"Food & drinks":12.0},"7-Eleven",31.4,7],[{"Food & drinks":100.99,"Groceries & daily":4.0,"Transport":4.0},"西北滩羊宴兰州牛肉面",55.29,5],[{"Food & drinks":179.0,"Phone & SIM":50.0,"Transport":15.0},"Starbucks",78.0,8],[{"Food & drinks":163.43,"Shopping & souvenirs":58.0,"Transport":13.0,"Groceries & daily":5.69},"QR payment",58.0,11],[{"Food & drinks":47.6,"Shopping & souvenirs":15.0,"Transport":10.0},"孙胖子烧烤城",47.6,5],[{"Food & drinks":107.49,"Electricity":50.0,"Transport":19.0,"Shopping & souvenirs":6.0},"北京庆丰包子铺有限公司",53.0,9],[{"Food & drinks":146.12,"Groceries & daily":22.2,"Transport":17.0},"哥们小馆家常菜",56.0,9],[{"Food & drinks":195.8,"Phone & SIM":50.0,"Transport":11.0,"Groceries & daily":3.0},"Dim sum, Jin Ding Xuan",169.8,6],[{"Food & drinks":148.8,"Transport":43.8},"崔记打边炉·烧烤",68.0,5],[{"Food & drinks":177.7,"Groceries & daily":33.34},"Snacks treat",88.0,5],[{"Shopping & souvenirs":266.0,"Food & drinks":176.9,"Transport":39.1},"MUJI haul",266.0,9],[{"Food & drinks":163.3,"Attractions & tours":125.0,"Electricity":100.0,"Groceries & daily":19.01,"Transport":11.88},"Great Wall tour bus",125.0,11],[{"Food & drinks":183.3,"Transport":22.0,"Groceries & daily":14.99},"孙胖子烧烤城",61.0,12],[{"Attractions & tours":140.0,"Food & drinks":62.8,"Transport":13.2},"Great Wall cable car",140.0,6],[{"Food & drinks":147.4,"Shopping & souvenirs":53.0,"Transport":9.0},"VOYAGECOFFEE南锣鼓巷店",73.0,8],[{"Wellness":126.0,"Food & drinks":96.09,"Transport":22.2},"Bathhouse",118.0,6],[{"Food & drinks":86.5,"Transport":60.0,"Attractions & tours":45.0,"Groceries & daily":19.3},"DiDi ride",48.0,11],[{"Food & drinks":247.13,"Transport":8.0},"Charcoal beef offal pot",141.0,5],[{"Transport":56.5,"Food & drinks":43.0,"Shopping & souvenirs":20.0},"DiDi ride",47.5,8],[{"Food & drinks":195.0,"Groceries & daily":62.18,"Transport":10.59},"北京单一起源咖啡有限公司",54.0,12],[{"Food & drinks":167.74,"Transport":51.8},"MOWU书局",68.0,5],[{"Food & drinks":182.34,"Transport":18.3,"Shopping & souvenirs":16.0},"锦芳小吃鸟巢店",66.8,10],[{"Food & drinks":176.16,"Shopping & souvenirs":149.0,"Electricity":30.0,"Transport":6.0},"Hand cream",149.0,10],[{"Food & drinks":341.44,"Shopping & souvenirs":167.48,"Attractions & tours":20.0,"Groceries & daily":8.9,"Transport":5.5},"Souvenirs near Shichahai",167.48,10],[{"Food & drinks":208.8,"Groceries & daily":32.2,"Transport":6.1},"Lamb spine hotpot",168.0,10],[{"Transport":74.1,"Food & drinks":34.0},"DiDi ride",60.9,3]],
+"oneoffs":[["Insta360 Ace Pro 2 camera","30 Oct · two payments, incl. 3% Alipay fee",3090.0,"Bought"],["Apartment deposit","19 Oct · incl. 3% Alipay fee",4295.1,"Refundable"],["Uniqlo order","8 Nov · fully refunded",1430.54,"Refunded"]],
+"ct":{"Accommodation":{"top":[["Apartment","柠檬晓生活国际公寓",4326.0,1]],"rest":[0,0,0]},"Attractions & tours":{"top":[["Great Wall cable car","**娜",140.0,1],["Great Wall tour bus","携程旅行网",125.0,1],["Summer Palace","北京市颐和园管理处",50.0,2],["Old Summer Palace","北京市海淀区圆明园管理处",25.0,1],["Beihai Park","北京市北海公园管理处",20.0,1]],"rest":[0,0,0]},"Electricity":{"top":[["Apartment","柠檬晓生活国际公寓",330.0,4]],"rest":[0,0,0]},"Food & drinks":{"top":[["Cui Ji BBQ","崔记打边炉·烧烤",269.0,4],["Sun Pangzi BBQ","孙胖子烧烤城",237.6,3],["Meituan orders, unnamed","美团订单",201.53,6],["Jin Ding Xuan dim sum","金鼎轩",169.8,1],["Lamb spine hotpot","老诚一锅",168.0,1]],"rest":[2940.4,80,63]},"Groceries & daily":{"top":[["Hesheng supermarket","合盛精品生活超市",126.98,8],["Vending machines","北京悦瑞达商贸有限责任公司",49.5,3],["7-Eleven","柒一拾壹",31.4,1],["Miniso","名创优品",27.31,1],["Legouda supermarket","乐购达超市",23.61,1]],"rest":[94.59,9,8]},"Phone & SIM":{"top":[["China Mobile","中国移动",150.0,3]],"rest":[0,0,0]},"Shopping & souvenirs":{"top":[["MUJI","无印良品MUJI",266.0,1],["Souvenirs near Shichahai","北京金鼎禾商贸有限公司",167.48,1],["Hand cream","妆小惠",149.0,1],["QR payment","*欢",58.0,1],["Palace Museum shop","北京故宫文化发展有限公司",53.0,1]],"rest":[57.0,4,4]},"Transport":{"top":[["DiDi","",317.8,10],["Metro","",231.7,53],["Bus","",8.5,8],["Bike share","",3.07,3]],"rest":[0,0,0]},"Wellness":{"top":[["Bathhouse","9号汤泉",126.0,2]],"rest":[0,0,0]}},
+"daily":[205.0,253.18,121.9,108.99,244.0,240.12,72.6,182.49,185.32,259.8,192.6,211.04,482.0,419.19,220.29,216.0,209.4,244.29,210.8,255.13,119.5,267.77,219.54,216.64,361.16,543.32,247.1,108.1],
+"kinds":[["BBQ & skewers","烧烤 · 串",14,846.58],["Coffee","咖啡",14,568.5],["Beef","牛肉",7,337.09],["Hotpot & stews","火锅 · 煲",6,387.78],["Buns & meat pies","包子 · 肉饼",6,231.9],["Noodles","面",5,215.29],["Mala & fried skewers","麻辣烫 · 炸串",4,188.89],["Lamb","羊肉",4,182.83],["Tanghulu","冰糖葫芦",4,84.92]],
+"repeat":[["冰糖葫芦",3],["詹记",3],["孙胖子烧烤城",3],["崔记打边炉·烧烤",2],["阿甘锅盔",2],["山西刀削面",2],["烤肠",2],["星巴克",2]],
+"top":[["2026-10-25","Apartment rent, 28 days","柠檬晓生活国际公寓",4326.0],["2026-11-06","MUJI haul","无印良品 京东MALL",266.0],["2026-11-03","Dim sum at Jin Ding Xuan","金鼎轩",169.8],["2026-11-20","Lamb spine hotpot","老诚一锅",168.0],["2026-11-19","Souvenirs near Shichahai","金鼎禾商贸",167.48],["2026-10-25","Electricity top-up","柠檬晓生活国际公寓",150.0],["2026-11-18","Hand cream","妆小惠",149.0],["2026-11-13","Charcoal beef offal pot","沙胆彪炭炉牛杂煲",141.0]]
+}</script>
+<script>
+/* Photos: put file names here once added (e.g. "photos/greatwall.jpg"). Empty means the slot stays hidden. */
+const PHOTOS = { hero: '', heroVideo: '', bbq: '', metro: '' };
+</script>
+<script>
+{
+const D = JSON.parse(document.getElementById('data').textContent);
+const $ = id => document.getElementById(id);
+const $$ = s => [...document.querySelectorAll(s)];
+const CAT = ['#0071e3','#34c759','#af52de','#ff9500','#5ac8fa','#ff2d55','#a2845e','#ffcc00','#5856d6','#30b0c7'], FLY = '#8e8e93';
+const DEF = { cur: 'MYR', fx: D.fx, off: {}, sort: 'date', budget: 150, kind: 'count', ppl: 1, style: 1, rent: true, fly: true, lang: 'en' };
+let st = { ...DEF, off: {} };
+try { const s = JSON.parse(localStorage.getItem('bj28a') || 'null'); if (s) st = { ...st, ...s, off: s.off || {} }; } catch (e) {}
+const save = () => { try { localStorage.setItem('bj28a', JSON.stringify(st)); } catch (e) {} };
+const ZH = {"Beijing 28": "北京 28 天", "Highlights": "亮点", "Where the expenses went": "钱花去哪了", "Day by day": "每日花费", "Fee checker": "手续费计算", "What we ate": "我们吃了什么", "Alipay or WeChat?": "支付宝还是微信？", "The big ones": "大额支出", "Kept separate": "单独列出", "Sections": "目录", "Plan yours": "规划你的行程", "Language": "语言", "Beijing. 28 days.": "北京，28 天。", "Everything in.": "全部算上。", "Flights and accommodation included.": "含机票和住宿。", "These are only my payments. A big thank-you to Zoe, my love, who generously covered some of the trip too.": "这些只是我自己付的钱。特别感谢我的爱人 Zoe，她也大方地承担了部分旅费。", "Currency": "货币", "Ringgit": "令吉", "Yuan": "人民币", "Rent and food.": "房租和吃饭，", "Half of everything.": "占了一半。", "Tap a category to see where it went. Switch one off to see how it changes the trip total.": "点一下类别，看看钱具体花在哪。关掉某一项，看看总花费怎么变。", "Exchange rate": "汇率", "per ¥1": "兑 ¥1", "About the exchange rate": "关于汇率", "Ringgit uses a market rate of RM 0.61 per ¥1 for Oct–Nov 2026, adjustable above. Banks add a small markup; your card statement is the final word.": "令吉按 2026 年 10–11 月的市场汇率 RM 0.61 兑 ¥1 计算，可以在上方调整。银行会加一点差价，最终以你的卡账单为准。", "Reset": "重置", "Daily spend with rent left out.": "每日花费，不含房租。", "What daily spend leaves out": "每日花费不含哪些", "Rent (": "房租（", ", paid at check-in) is left out of daily figures. Trip window: 25 Oct (transit at Chongqing) to 21 Nov (Beijing Capital airport).": "，入住时支付）不计入每日花费。行程时间：10月25日（重庆转机）至11月21日（北京首都机场）。", "Hover or tap a day to see where the money went.": "把鼠标移到或点一下某一天，看看钱花在哪。", "Order": "排序", "By date": "按日期", "Biggest first": "金额从大到小", "Daily spend chart": "每日花费图表", "Daily budget": "每日预算", "Your trip.": "你的行程，", "Our numbers.": "我们的数据。", "Built from what each day really cost us.": "根据我们每天的真实花费推算。", "Days in Beijing": "在北京的天数", "Sharing the apartment": "合租人数", "Travellers": "人数", "Just me": "只有我", "Two": "两人", "Three": "三人", "Spending style": "消费风格", "How spending styles work": "消费风格怎么算", "Thrifty is 0.7× our food, shopping and fun; Comfy is 1.4×, with 1.6× transport for more DiDi. Flights stay at what we paid:": "省钱模式按我们餐饮、购物和玩乐的 0.7 倍计算；舒适模式按 1.4 倍，交通按 1.6 倍（多打几次滴滴）。机票按我们实际付的：", "Thrifty": "省钱", "Like us": "跟我们一样", "Comfy": "舒适", "Rent an apartment like ours": "租一间像我们这样的公寓", "Rent an apartment": "租公寓", "Return flights from KL": "吉隆坡往返机票", "Return flights": "往返机票", "Estimated per person": "每人预估", "Foreign card fees.": "外卡手续费，", "Free up to": "单笔不超过", "a payment.": "免费。", "Paying with a Malaysian card? Go over that in a single payment and Alipay adds 3%. WeChat Pay skips the 3% for cards added in the last 90 days, as long as you spend under": "用马来西亚的卡付款？单笔超过这个数，支付宝会加收 3%。微信支付对最近 90 天内绑定的卡免收这 3%，只要每天花费不超过", "a day. Type an amount to check.": "。输入金额算一算。", "About the card fees": "关于手续费", "Alipay adds 3% to foreign-card payments over": "支付宝对超过", ". WeChat gives first-time foreign cards 0% for 90 days on up to": "的外卡付款加收 3%。微信对首次绑定的外卡提供 90 天 0% 手续费，每天最多", "a day; the promotion ends 31 Dec 2026. After that it works like Alipay.": "；活动到 2026 年 12 月 31 日结束，之后就和支付宝一样。", "One payment of (": "单笔金额（", "WeChat card added in the last 90 days": "微信绑卡未满 90 天", "New WeChat card": "新绑定的微信卡", "Alipay": "支付宝", "WeChat Pay": "微信支付", "Skewers. Coffee.": "烤串，咖啡，", "More skewers.": "还是烤串。", "Ranked by": "排序依据", "Rank by": "排序依据", "Most often": "次数最多", "Most spent": "花得最多", "One payment can count twice. Beef noodles count as beef and as noodles.": "一笔付款可能算两次，比如牛肉面既算牛肉也算面。", "Two apps.": "两个 App，", "Two jobs.": "各有分工。", "What we'd tell a friend.": "给朋友的建议。", "The biggest payments.": "最大的几笔支出，", "Rent leads by far.": "房租遥遥领先。", "One-offs.": "一次性支出，", "Not part of the trip total.": "不算进旅费。", "Big payments that weren't day-to-day travel costs, so they stay out of every number above.": "这些大额付款不属于日常旅行开销，所以上面的数字都没算进去。", "That's about {x} a day in Beijing.": "在北京平均每天约 {x}。", "Everything in. <span>Flights and accommodation included.</span>": "全部算上。<span>含机票和住宿。</span>", "{a} of {b} categories. <span>Your call.</span>": "已选 {a}/{b} 个类别。<span>你说了算。</span>", "Total, all categories": "总计，全部类别", "Total without {x}": "总计，不含{x}", "{x} a day": "每天 {x}", "Count {x}": "计入{x}", "Return fares": "往返机票", "Trip protection and fees": "旅行保险和手续费", "Mullvad VPN, first 30 days": "Mullvad VPN，第一个 30 天", "Mullvad VPN, bought too early": "Mullvad VPN，买太早多出来的 30 天", "{n} payments": "{n} 笔", "Everything else": "其他", "{a} places, {b} payments": "{a} 家店，{b} 笔", "Daily spend. <span>Without rent.</span>": "每日花费。<span>不含房租。</span>", "A typical day": "普通的一天", "Return flights. <span>KUL – PEK.</span>": "往返机票。<span>吉隆坡 – 北京。</span>", "{a} in fares, {b} in protection and fees": "机票 {a}，保险和手续费 {b}", "Metro and bus rides.": "地铁和公交。", "{a} – {b} a ride, all on Alipay": "每次 {a} – {b}，全用支付宝", "Coffees. <span>Luckin, Cotti, Manner.</span>": "咖啡。<span>瑞幸、库迪、Manner。</span>", "{x} in all": "共 {x}", "烧烤 (skewers). <span>My favourite.</span>": "烧烤。<span>我的最爱。</span>", "{x} · 10 nights": "{x} · 10 个晚上", "Meituan Food Delivery.": "美团外卖。", "{x} · 31 orders": "{x} · 31 单", "Paid in hidden card fees. <span>All on Alipay.</span>": "隐形手续费。<span>全在支付宝。</span>", "The 3% on the rent": "房租那笔的 3%", "Most expensive day first": "花得最多的一天排前面", "Budget": "预算", "Over budget": "超预算", "Within budget": "在预算内", "Total, 28 days": "28 天总计", "25 Oct – 21 Nov 2026": "2026年10月25日 – 11月21日", "Daily spend. <span>About {x} without rent.</span>": "每日花费。<span>不含房租约 {x}。</span>", "Daily average": "日均", "Busiest day": "花最多的一天", "{a} of {b} days": "{b} 天里有 {a} 天", "Biggest:": "最大一笔：", "{n} days": "{n} 天", "Rent and electricity": "房租和电费", "Food and drinks": "餐饮", "Transport": "交通", "Shopping and fun": "购物和玩乐", "Groceries and phone": "日用品和话费", "{x} a day in Beijing": "在北京每天 {x}", "Free": "免费", "3% of {a} is {b}": "{a} 的 3% 是 {b}", "Up to {x} is free": "{x} 以内免费", "Over the {x} daily free cap": "超过每天 {x} 的免费额度", "Covered by the new-card offer": "新卡优惠已覆盖", "<b>{x} a day on food</b>, eating out most meals. Lunch peaked at 1pm, and 16 meals came after 9pm.": "<b>每天吃饭花 {x}</b>，大多在外面吃。午饭高峰在下午 1 点，还有 16 顿是晚上 9 点以后吃的。", "3% over {x}": "超过 {x} 收 3%", "Best for": "最适合", "Metro and bus": "地铁和公交", "Payments": "付款笔数", "Spent": "花费", "Over {x}": "超过 {x}", "Card fees": "外卡手续费", "Lucky discounts": "随机立减", "0% for 90 days": "90 天 0% 手续费", "DiDi and Meituan": "滴滴和美团", "Days over {x}": "超过 {x} 的天数", "Use Alipay as your metro and bus card. Every ride went through its transit QR.": "把支付宝当地铁卡和公交卡用。每一趟都是刷它的乘车码。", "Watch Alipay above {x}. The 3% added up to {y} on the rent and deposit.": "支付宝超过 {x} 要小心。房租和押金的 3% 加起来就是 {y}。", "Use WeChat for DiDi and Meituan. Every ride and food order went through their mini programs.": "滴滴和美团用微信。每次打车和点外卖都是在小程序里付的。", "Keep single payments at {x} or less where you can. That is fee-free on both apps, all year.": "能的话，单笔控制在 {x} 以内。这样两个 App 全年都免手续费。", "Flights": "机票", "Return flights + protection": "往返机票 + 保险", "VPN": "VPN", "Mullvad, 60 days for a 28-day trip": "Mullvad，28 天的行程买了 60 天", "Apartment rent": "公寓房租", "Food & drinks": "餐饮", "Shopping": "购物", "Attractions": "景点", "Groceries": "日用品", "Electricity": "电费", "Phone": "话费", "Bathhouse": "洗浴", "28 days, paid up front": "28 天，入住时付清", "MUJI, souvenirs, gifts": "无印良品、纪念品、礼物", "53 metro · 10 DiDi · 8 bus": "地铁 53 次 · 滴滴 10 次 · 公交 8 次", "Great Wall, parks": "长城、公园", "4 prepaid top-ups": "4 次预付充值", "Apartment": "公寓", "Great Wall cable car": "长城缆车", "Great Wall tour bus": "长城一日游巴士", "Summer Palace": "颐和园", "Old Summer Palace": "圆明园", "Beihai Park": "北海公园", "Cui Ji BBQ": "崔记烧烤", "Sun Pangzi BBQ": "孙胖子烧烤", "Meituan orders, unnamed": "美团订单（没写店名）", "Jin Ding Xuan dim sum": "金鼎轩点心", "Lamb spine hotpot": "羊蝎子火锅", "Hesheng supermarket": "合盛超市", "Vending machines": "自动售货机", "7-Eleven": "7-Eleven 便利店", "Miniso": "名创优品", "Legouda supermarket": "乐购达超市", "China Mobile": "中国移动", "MUJI": "无印良品", "Souvenirs near Shichahai": "什刹海附近的纪念品", "Hand cream": "护手霜", "QR payment": "扫码付款", "Palace Museum shop": "故宫文创店", "DiDi": "滴滴", "Metro": "地铁", "Bus": "公交", "Bike share": "共享单车", "Electricity top-up": "电费充值", "Starbucks": "星巴克", "Dim sum, Jin Ding Xuan": "金鼎轩点心", "Snacks treat": "请吃零食", "MUJI haul": "无印良品扫货", "DiDi ride": "滴滴打车", "Charcoal beef offal pot": "炭炉牛杂煲", "BBQ & skewers": "烧烤 · 串", "Coffee": "咖啡", "Beef": "牛肉", "Hotpot & stews": "火锅 · 煲", "Buns & meat pies": "包子 · 肉饼", "Noodles": "面", "Mala & fried skewers": "麻辣烫 · 炸串", "Lamb": "羊肉", "Tanghulu": "冰糖葫芦", "Apartment rent, 28 days": "公寓房租，28 天", "Dim sum at Jin Ding Xuan": "金鼎轩点心", "Insta360 Ace Pro 2 camera": "Insta360 Ace Pro 2 相机", "30 Oct · two payments, incl. 3% Alipay fee": "10月30日 · 分两笔付，含支付宝 3% 手续费", "Bought": "已购买", "Apartment deposit": "公寓押金", "19 Oct · incl. 3% Alipay fee": "10月19日 · 含支付宝 3% 手续费", "Refundable": "可退还", "Uniqlo order": "优衣库订单", "8 Nov · fully refunded": "11月8日 · 已全额退款", "Refunded": "已退款"};
+const isZh = () => st.lang === 'zh';
+const t = s => (isZh() && ZH[s] != null) ? ZH[s] : s;
+const tf = (s, o) => t(s).replace(/\{(\w+)\}/g, (_, k) => o[k]);
+const dshort = d => isZh() ? `${d.getMonth() + 1}月${d.getDate()}日` : `${d.getDate()} ${d.toLocaleString('en', { month: 'short' })}`;
+const I18N_NODES = [];
+{
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n; (n = w.nextNode());) {
+    const s = n.nodeValue, k = s.trim();
+    if (/[A-Za-z]{2,}/.test(k) && !/[一-鿿]/.test(k) && !n.parentElement.closest('script,style,.cjk')) I18N_NODES.push([n, s, k]);
+  }
+  $$('[aria-label],[title]').forEach(el => ['aria-label', 'title'].forEach(a => { const v = el.getAttribute(a); if (v && /[A-Za-z]{2,}/.test(v)) I18N_NODES.push([el, v, v, a]); }));
+}
+function langStatic() {
+  I18N_NODES.forEach(([n, orig, k, attr]) => { const v = t(k); if (attr) n.setAttribute(attr, v); else n.nodeValue = orig.replace(k, v); });
+  document.documentElement.lang = isZh() ? 'zh-CN' : 'en';
+  document.title = t('Beijing. 28 days.');
+  setSeg('#lang', st.lang, 'lang');
+}
+
+const fmt = (n, d = 0) => n.toLocaleString('en-MY', { minimumFractionDigits: d, maximumFractionDigits: d });
+const isRM = () => st.cur === 'MYR';
+const m = (c, d = 0) => isRM() ? 'RM ' + fmt(c * st.fx, d) : '¥' + fmt(c, d);
+const cu = () => isRM() ? 'RM' : '¥';
+const toC = v => isRM() ? v / st.fx : v, fromC = c => isRM() ? c * st.fx : c;
+const yuan = (n, d = 0) => '¥' + fmt(n, d);
+const days = D.days, flyCny = () => D.flights_myr / st.fx;
+const B = D.buckets.map(([k, en, note, cny], i) => ({ k, en, note, cny, c: CAT[i] }));
+const vpnCny = () => D.vpn_myr / st.fx;
+const items = () => [...B, { k: 'Flights', en: 'Flights', note: 'Return flights + protection', cny: flyCny(), c: FLY }, { k: 'VPN', en: 'VPN', note: 'Mullvad, 60 days for a 28-day trip', cny: vpnCny(), c: '#636366' }];
+const dates = D.daily.map((_, i) => new Date(2026, 9, 25 + i));
+const dlong = i => dates[i].toLocaleDateString(isZh() ? 'zh-CN' : 'en', { weekday: 'long', day: 'numeric', month: 'long' });
+const setSeg = (sel, val, attr) => $$(sel + ' button').forEach(b => b.setAttribute('aria-pressed', b.dataset[attr] == val));
+
+/* Hero + where */
+function totals() {
+  const on = items().filter(b => !st.off[b.k]);
+  return { on, tot: on.reduce((s, b) => s + b.cny, 0), china: on.filter(b => b.k !== 'Flights' && b.k !== 'VPN').reduce((s, b) => s + b.cny, 0) };
+}
+function hero() {
+  const { on, tot, china } = totals(), allIn = on.length === items().length;
+  $('h-total').textContent = m(tot);
+  $('h-sub').textContent = tf("That's about {x} a day in Beijing.", { x: m(china / days) });
+  $$('.hero .tag')[0].innerHTML = allIn ? t('Everything in. <span>Flights and accommodation included.</span>') : tf('{a} of {b} categories. <span>Your call.</span>', { a: on.length, b: items().length });
+  setSeg('.hero .seg', st.cur, 'cur');
+  $('w-total').textContent = m(tot);
+  $('w-cap').textContent = allIn ? t('Total, all categories') : tf('Total without {x}', { x: items().filter(b => st.off[b.k]).map(b => isZh() ? t(b.en) : b.en.toLowerCase()).join(isZh() ? '、' : ', ') });
+  $('storage').innerHTML = on.map(b => `<div style="flex-grow:${b.cny};background:${b.c}" title="${t(b.en)}"></div>`).join('');
+  $('leg').innerHTML = on.slice().sort((a, b) => b.cny - a.cny).slice(0, 6).map(b => `<span style="--c:${b.c}">${t(b.en)} ${Math.round(b.cny / tot * 100)}%</span>`).join('');
+  $('cats').innerHTML = items().slice().sort((a, b) => b.cny - a.cny).map(b => `<div class="row${st.off[b.k] ? ' off' : ''}" role="listitem" data-k="${b.k}" style="--c:${b.c}" tabindex="0" aria-expanded="${open === b.k}">
+    <span class="dot"></span><span class="t"><span class="nm">${t(b.en)}</span>${b.note ? `<small>${b.note === 'about 142/day' ? tf('{x} a day', { x: m(142.37) }) : t(b.note)}</small>` : ''}</span><span class="a">${m(b.cny)}</span>
+    <button class="sw" role="switch" aria-checked="${!st.off[b.k]}" aria-label="${tf('Count {x}', { x: t(b.en) })}"></button></div>${open === b.k ? subList(b.k) : ''}`).join('');
+  $('fx').value = st.fx; $('fx-v').textContent = 'RM ' + st.fx.toFixed(3);
+}
+let open = '';
+function subList(k) {
+  if (k === 'Flights') return `<div class="drill"><div class="si"><span>${t('Return fares')}</span><span>${m(1026 / st.fx)}</span></div><div class="si"><span>${t('Trip protection and fees')}</span><span>${m(214.63 / st.fx)}</span></div></div>`;
+  if (k === 'VPN') return `<div class="drill"><div class="si"><span>${t('Mullvad VPN, first 30 days')}</span><span>${m(23.5 / st.fx, 2)}</span></div><div class="si"><span>${t('Mullvad VPN, bought too early')}</span><span>${m(23.5 / st.fx, 2)}</span></div></div>`;
+  const c = D.ct[k]; if (!c) return '';
+  const rows = c.top.map(([en, zh, v, n]) => `<div class="si"><span>${t(en)}${zh ? ` <small class="cjk">${zh}</small>` : ''}${n > 1 ? `<small>${tf('{n} payments', { n })}</small>` : ''}</span><span>${m(v)}</span></div>`).join('');
+  const rest = c.rest[1] ? `<div class="si rest"><span>${t('Everything else')}<small>${tf('{a} places, {b} payments', { a: c.rest[2], b: c.rest[1] })}</small></span><span>${m(c.rest[0])}</span></div>` : '';
+  return `<div class="drill">${rows}${rest}</div>`;
+}
+$('cats').addEventListener('click', e => {
+  const r = e.target.closest('.row'); if (!r) return; const k = r.dataset.k;
+  if (e.target.closest('.sw')) { st.off[k] ? delete st.off[k] : st.off[k] = true; save(); hero(); bento(); return; }
+  open = open === k ? '' : k; hero();
+});
+$('cats').addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('row')) { e.preventDefault(); e.target.click(); } });
+
+/* Bento */
+let bentoShown = false;
+function bento() {
+  const srt = [...D.daily].sort((a, b) => a - b), med = (srt[13] + srt[14]) / 2;
+  const T = [
+    ['t3', t('Daily spend. <span>Without rent.</span>'), m(med), t('A typical day')],
+    ['t3', t('Return flights. <span>KUL – PEK.</span>'), m(flyCny()), tf('{a} in fares, {b} in protection and fees', { a: m(1026 / st.fx), b: m(214.63 / st.fx) })],
+    ['t2', t('Metro and bus rides.'), '61', tf('{a} – {b} a ride, all on Alipay', { a: m(1, isRM() ? 2 : 0), b: m(3, isRM() ? 2 : 0) })],
+    ['t2', t('Coffees. <span>Luckin, Cotti, Manner.</span>'), '14', tf('{x} in all', { x: m(568.5) })],
+    ['t2', t('烧烤 (skewers). <span>My favourite.</span>'), '14×', tf('{x} · 10 nights', { x: m(846.58) })],
+    ['t3', t('Meituan Food Delivery.'), '39%', tf('{x} · 31 orders', { x: m(1567.02) })],
+    ['t3', t('Paid in hidden card fees. <span>All on Alipay.</span>'), m(126, 2), t('The 3% on the rent')],
+  ];
+  const shown = bentoShown; let h = T.map(([c, k, v, cap]) => `<div class="tile ${c} reveal${shown ? ' in' : ''}"><p class="k">${k}</p><div><div class="v num">${v}</div><p class="c">${cap}</p></div></div>`).join('');
+  if (PHOTOS.bbq) h = h.replace('<div class="tile t2 reveal"><p class="k">BBQ', `<div class="tile t2 photo reveal"><img src="${PHOTOS.bbq}" alt="BBQ skewers"><div class="cap"><p class="k">BBQ`);
+  $('bento').innerHTML = h; observe();
+}
+
+/* Chart */
+const svg = $('fig').querySelector('svg');
+let pick = -1, mode = '';
+const vals = () => D.daily.map(c => isRM() ? c * st.fx : c);
+function chart() {
+  const W = svg.clientWidth, H = svg.clientHeight; if (!W) return;
+  const v = vals(), bud = st.budget, avg = v.reduce((s, x) => s + x, 0) / v.length;
+  const ord = v.map((_, i) => i); if (st.sort === 'amt') ord.sort((a, b) => v[b] - v[a]);
+  const max = Math.max(...v, bud), step = max > 400 ? 100 : 50, top = Math.ceil(max / step) * step;
+  const pl = 0, pr = 40, pt = 8, pb = 24, iw = W - pl - pr, ih = H - pt - pb, bw = iw / v.length;
+  const y = x => pt + ih - x / top * ih;
+  let g = '';
+  for (let t = 0; t <= top; t += step) g += `<line class="g" x1="0" x2="${iw}" y1="${y(t)}" y2="${y(t)}"/><text x="${W}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+  ord.forEach((i, p) => {
+    const w = Math.max(bw * .62, 2), x = p * bw + (bw - w) / 2, t = y(v[i]), r = Math.min(w / 2, 4);
+    const dim = pick >= 0 ? pick !== i : mode === 'over' ? v[i] <= bud : mode === 'busy' ? v[i] !== Math.max(...v) : false;
+    g += `<path class="b${v[i] > bud ? ' o' : ''}${dim ? ' dim' : ''}" d="M${x},${pt + ih}V${t + r}Q${x},${t} ${x + r},${t}H${x + w - r}Q${x + w},${t} ${x + w},${t + r}V${pt + ih}Z"/>`;
+    if (st.sort === 'date' && (p % 7 === 0)) g += `<text x="${x}" y="${H - 4}">${dshort(dates[i])}</text>`;
+  });
+  if (st.sort === 'amt') g += `<text x="0" y="${H - 4}">${t('Most expensive day first')}</text>`;
+  g += `<line class="bud" x1="0" x2="${iw}" y1="${y(bud)}" y2="${y(bud)}"/><text x="4" y="${y(bud) - 6}" style="fill:var(--ink);font-weight:600;paint-order:stroke;stroke:var(--tile);stroke-width:4px">${t('Budget')}</text>`;
+  v.forEach((x, i) => { if (x > bud) { const p = ord.indexOf(i), cx = p * bw + bw / 2; g += `<circle cx="${cx}" cy="${y(x) - 7}" r="2.5" fill="var(--over)"/>`; } });
+  if (mode === 'avg') g += `<line class="avg" x1="0" x2="${iw}" y1="${y(avg)}" y2="${y(avg)}"/>`;
+  svg.innerHTML = g;
+  svg.dataset.bw = bw;
+}
+function selText() {
+  const v = vals(), u = isRM() ? 'RM ' : '¥';
+  if (pick >= 0) { $('sel').innerHTML = `<div class="l">${dlong(pick)}</div><div class="v num">${m(D.daily[pick], 2)}</div><div class="d">${v[pick] > st.budget ? t('Over budget') : t('Within budget')}</div>`; return; }
+  const sum = D.daily.reduce((s, x) => s + x, 0);
+  $('sel').innerHTML = `<div class="l">${t('Total, 28 days')}</div><div class="v num">${m(sum)}</div><div class="d">${t('25 Oct – 21 Nov 2026')}</div>`;
+}
+function daily() {
+  const b = $('budget'); b.min = isRM() ? 30 : 50; b.max = isRM() ? 400 : 650; b.step = isRM() ? 5 : 10;
+  if (st.budget > +b.max || st.budget < +b.min) st.budget = isRM() ? 150 : 250;
+  b.value = st.budget; $('b-v').textContent = (isRM() ? 'RM ' : '¥') + fmt(st.budget);
+  const srt = [...D.daily].sort((a, b) => a - b), med = (srt[13] + srt[14]) / 2;
+  $('d-h').innerHTML = tf('Daily spend. <span>About {x} without rent.</span>', { x: m(med) });
+  const v = vals(), over = v.filter(x => x > st.budget).length, mx = Math.max(...v), mi = v.indexOf(mx);
+  const S = [['avg', t('Daily average'), m(D.daily.reduce((s, x) => s + x, 0) / days)], ['busy', t('Busiest day'), `${m(D.daily[mi])} · ${dshort(dates[mi])}`], ['over', t('Over budget'), tf('{a} of {b} days', { a: over, b: days })]];
+  $('sums').innerHTML = S.map(([k, l, val]) => `<button class="sum" data-m="${k}" aria-pressed="${mode === k}"><span class="l">${l}</span><span class="v">${val}</span></button>`).join('');
+  setSeg('#daily .seg', st.sort, 'sort');
+  selText(); chart();
+}
+const scrub = e => { const r = svg.getBoundingClientRect(), bw = +svg.dataset.bw, p = Math.floor((e.clientX - r.left) / bw); if (p < 0 || p >= days) return;
+  const v = vals(), ord = v.map((_, i) => i); if (st.sort === 'amt') ord.sort((a, b) => v[b] - v[a]);
+  if (pick !== ord[p]) { pick = ord[p]; selText(); chart(); }
+  tipShow(pick, p * bw + bw / 2); };
+svg.addEventListener('pointermove', scrub); svg.addEventListener('pointerdown', scrub);
+const unpick = () => { pick = -1; selText(); chart(); tipHide(); };
+svg.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') unpick(); });
+document.addEventListener('pointerdown', e => { if (pick >= 0 && !svg.contains(e.target)) unpick(); });
+$('sums').addEventListener('click', e => { const b = e.target.closest('.sum'); if (!b) return; mode = mode === b.dataset.m ? '' : b.dataset.m; daily(); });
+$('budget').addEventListener('input', e => { st.budget = +e.target.value; save(); daily(); });
+$$('#daily .seg button').forEach(b => b.onclick = () => { st.sort = b.dataset.sort; save(); daily(); });
+const ro = new ResizeObserver(chart); ro.observe(svg);
+
+const tip = $('tip');
+function tipShow(i, cx) {
+  const [cats, bn, ba, n] = D.dd[i];
+  const rows = Object.entries(cats).map(([k, v]) => { const b = B.find(x => x.k === k); return `<div class="r" style="--c:${b ? b.c : '#8e8e93'}"><span>${t(b ? b.en : k)}</span><span>${m(v, 2)}</span></div>`; }).join('');
+  tip.innerHTML = `<b>${m(D.daily[i], 2)}</b><div class="h">${dates[i].toLocaleDateString(isZh() ? 'zh-CN' : 'en', { weekday: 'short', day: 'numeric', month: 'short' })} · ${tf('{n} payments', { n })}</div>${rows}<div class="bg">${t('Biggest:')} <span>${t(bn)}</span>, <span class="num">${m(ba, 2)}</span></div>`;
+  tip.hidden = false;
+  const W = $('fig').clientWidth, w = tip.offsetWidth;
+  tip.style.left = Math.max(0, Math.min(W - w, cx > W / 2 ? cx - w - 16 : cx + 16)) + 'px';
+}
+const tipHide = () => { tip.hidden = true; };
+
+/* Planner */
+const rate = k => B.find(b => b.k === k).cny / days;
+function plan() {
+  const n = +$('p-days').value, ppl = st.ppl, sty = st.style;
+  $('p-days-v').textContent = tf('{n} days', { n });
+  setSeg('#p-ppl', ppl, 'v'); setSeg('#p-style', sty, 'v');
+  $('p-rent').setAttribute('aria-checked', st.rent); $('p-fly').setAttribute('aria-checked', st.fly);
+  const R = [];
+  if (st.rent) R.push([t('Rent and electricity'), (rate('Accommodation') + rate('Electricity')) * n / ppl]);
+  R.push([t('Food and drinks'), rate('Food & drinks') * n * sty]);
+  R.push([t('Transport'), rate('Transport') * n * (sty > 1 ? 1.6 : sty)]);
+  R.push([t('Shopping and fun'), (rate('Shopping & souvenirs') + rate('Attractions & tours') + rate('Wellness')) * n * sty]);
+  R.push([t('Groceries and phone'), (rate('Groceries & daily') + rate('Phone & SIM')) * n]);
+  if (st.fly) R.push([t('Return flights'), flyCny()]);
+  const tot = R.reduce((s, r) => s + r[1], 0), mx = Math.max(...R.map(r => r[1]));
+  $('p-total').textContent = m(tot);
+  $('p-sub').textContent = tf('{x} a day in Beijing', { x: m((tot - (st.fly ? flyCny() : 0)) / n) });
+  $('p-bars').innerHTML = R.map(([k, v]) => `<div class="bar"><div class="top"><span>${k}</span><span class="num">${m(v)}</span></div><div class="tr"><div class="fl" style="width:${v / mx * 100}%;${k === t('Return flights') ? 'background:#8e8e93' : ''}"></div></div></div>`).join('');
+}
+$('p-days').addEventListener('input', plan);
+$('p-ppl').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.ppl = +b.dataset.v; save(); plan(); } });
+$('p-style').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.style = +b.dataset.v; save(); plan(); } });
+$('p-rent').onclick = () => { st.rent = !st.rent; save(); plan(); };
+$('p-fly').onclick = () => { st.fly = !st.fly; save(); plan(); };
+
+/* Fees */
+const pre = () => $('f-pre').innerHTML = [38, 200, 266, 1030, 4326].map(v => `<button class="chip" data-v="${v}">${m(v)}</button>`).join('');
+$('f-pre').addEventListener('click', e => { const v = e.target.dataset.v; if (v) { $('f-amt').value = Math.round(fromC(+v) * 100) / 100; fees(); } });
+$('f-new').onclick = () => { $('f-new').setAttribute('aria-checked', $('f-new').getAttribute('aria-checked') !== 'true'); fees(); };
+function fees() {
+  const a = toC(Math.max(+$('f-amt').value || 0, 0)), today = 0, isNew = $('f-new').getAttribute('aria-checked') === 'true';
+  const ali = a > 200 ? a * .03 : 0, wx = (a <= 200 || (isNew && a + today <= 1000)) ? 0 : a * .03;
+  const put = (id, f, note) => { $(id).className = 'v num ' + (f ? 'no' : 'ok'); $(id).textContent = f ? '+' + m(f, 2) : t('Free'); $(id + '-n').textContent = note; };
+  put('f-ali', ali, ali ? tf('3% of {a} is {b}', { a: m(a, 2), b: m(ali, 2) }) : tf('Up to {x} is free', { x: m(200) }));
+  put('f-wx', wx, wx ? (isNew ? tf('Over the {x} daily free cap', { x: m(1000) }) : tf('3% of {a} is {b}', { a: m(a, 2), b: m(wx, 2) })) : (a <= 200 ? tf('Up to {x} is free', { x: m(200) }) : t('Covered by the new-card offer')));
+}
+$('f-amt').addEventListener('input', fees);
+
+/* Food */
+function food() {
+  const K = D.kinds.slice().sort((a, b) => st.kind === 'count' ? b[2] - a[2] : b[3] - a[3]);
+  const mx = Math.max(...K.map(k => st.kind === 'count' ? k[2] : k[3]));
+  $('kinds').innerHTML = K.map(([en, zh, n, c]) => `<div class="bar"><div class="top"><span>${t(en)}${isZh() ? '' : `<small class="cjk">${zh}</small>`}</span><span class="num">${st.kind === 'count' ? n + '×' : m(c)} <small>${st.kind === 'count' ? m(c) : n + '×'}</small></span></div><div class="tr"><div class="fl" style="width:${(st.kind === 'count' ? n : c) / mx * 100}%"></div></div></div>`).join('');
+  $('eat-i').innerHTML = tf('<b>{x} a day on food</b>, eating out most meals. Lunch peaked at 1pm, and 16 meals came after 9pm.', { x: m(142.37) });
+  setSeg('#food .seg', st.kind, 'kind');
+}
+$$('#food .seg button').forEach(b => b.onclick = () => { st.kind = b.dataset.kind; save(); food(); });
+
+/* Apps */
+function apps() {
+  const card = (n, badge, col, rows) => `<div class="card" style="background:var(--alt)"><h3 style="font-size:32px;font-weight:600;letter-spacing:-.005em">${n}</h3><span class="badge" style="color:${col}">${badge}</span><div class="spec">${rows.map(([a, b]) => `<div><span class="grey">${a}</span><span>${b}</span></div>`).join('')}</div></div>`;
+  $('apps').innerHTML = card(t('Alipay'), tf('3% over {x}', { x: m(200) }), 'var(--over)', [[t('Best for'), t('Metro and bus')], [t('Payments'), '140'], [t('Spent'), m(7593.31)], [tf('Over {x}', { x: m(200) }), '1'], [t('Card fees'), m(251.1, 2)], [t('Lucky discounts'), '2× 遇财神立减']]) +
+    card(t('WeChat Pay'), t('0% for 90 days'), 'var(--okt)', [[t('Best for'), t('DiDi and Meituan')], [t('Payments'), '77'], [t('Spent'), m(3349.96)], [tf('Over {x}', { x: m(200) }), '1'], [t('Card fees'), m(0, 2)], [tf('Days over {x}', { x: m(1000) }), '0']]);
+}
+const tips = () => $('tips').innerHTML = [t('Use Alipay as your metro and bus card. Every ride went through its transit QR.'), tf('Watch Alipay above {x}. The 3% added up to {y} on the rent and deposit.', { x: m(200), y: m(251.1, 2) }), t('Use WeChat for DiDi and Meituan. Every ride and food order went through their mini programs.'), tf('Keep single payments at {x} or less where you can. That is fee-free on both apps, all year.', { x: m(200) })].map(t => `<li>${t}</li>`).join('');
+
+/* Payments */
+function table() {
+  const R = D.top;
+  $('top').innerHTML = R.map(([d, en, zh, c]) => `<div class="it"><span class="d num">${dshort(new Date(d + 'T00:00:00'))}</span><span class="w">${t(en)}${zh ? `<small class="cjk">${zh}</small>` : ''}</span><span class="a">${m(c, 2)}</span></div>`).join('');
+}
+const Rc = D.reconcile;
+
+/* Photos */
+if (PHOTOS.hero || PHOTOS.heroVideo) {
+  const hp = $('hero-photo'); hp.hidden = false;
+  hp.innerHTML = PHOTOS.heroVideo ? `<video src="${PHOTOS.heroVideo}" ${PHOTOS.hero ? `poster="${PHOTOS.hero}"` : ''} autoplay muted loop playsinline aria-label="Beijing"></video>` : `<img src="${PHOTOS.hero}" alt="Beijing">`;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { const v = hp.querySelector('video'); if (v) v.removeAttribute('autoplay'); }
+}
+
+/* Reveal */
+let io = null;
+function observe() {
+  if (!('IntersectionObserver' in window)) { $$('.reveal').forEach(el => el.classList.add('in')); return; }
+  io = io || new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); if (e.target.classList.contains('tile')) bentoShown = true; io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  $$('.reveal:not(.in)').forEach(el => io.observe(el));
+}
+
+function statics() { $$('.mc').forEach(e => e.textContent = m(e.dataset.fly ? flyCny() : +e.dataset.c, +e.dataset.d)); $$('.cu').forEach(e => e.textContent = cu()); pre(); tips(); }
+function oneoffs() {
+  $('oo').innerHTML = D.oneoffs.map(([n, d, c, st]) => `<div class="card"><span class="st" style="color:${st === 'Bought' ? 'var(--ink)' : st === 'Refunded' ? 'var(--okt)' : 'var(--link)'}">${t(st)}</span><div class="v num">${m(c)}</div><p style="font-size:17px;font-weight:600">${t(n)}</p><p class="grey" style="font-size:14px">${t(d)}</p></div>`).join('');
+}
+const placeTip = el => { const t = el.querySelector('.itip'); if (!t) return; t.style.marginLeft = '0px'; const r = t.getBoundingClientRect(); const d = r.right > innerWidth - 12 ? innerWidth - 12 - r.right : r.left < 12 ? 12 - r.left : 0; t.style.marginLeft = d + 'px'; };
+['pointerenter', 'focusin'].forEach(ev => document.addEventListener(ev, e => { const i = e.target.closest && e.target.closest('.info'); if (i) placeTip(i); }, true));
+const mb = $('menubtn'), nv = $('secnav');
+const setMenu = o => { nv.classList.toggle('open', o); mb.setAttribute('aria-expanded', o); };
+mb.onclick = e => { e.stopPropagation(); setMenu(!nv.classList.contains('open')); };
+nv.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gnav')) setMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+function all() { oneoffs(); statics(); hero(); bento(); daily(); plan(); fees(); food(); apps(); table(); }
+$$('.hero .seg button').forEach(b => b.onclick = () => {
+  if (st.cur === b.dataset.cur) return;
+  st.budget = b.dataset.cur === 'MYR' ? Math.round(st.budget * st.fx / 5) * 5 : Math.round(st.budget / st.fx / 10) * 10;
+  ['f-amt'].forEach(id => { const el = $(id), c = toC(+el.value || 0); st.cur = b.dataset.cur; el.value = Math.round(fromC(c) * 100) / 100; st.cur = st.cur === 'MYR' ? 'CNY' : 'MYR'; });
+  st.cur = b.dataset.cur; save(); all();
+});
+$('fx').addEventListener('input', e => { st.fx = +e.target.value; save(); all(); });
+$('reset').onclick = () => { st = { ...DEF, off: {}, lang: st.lang }; mode = ''; save(); all(); };
+$$('#lang button').forEach(b => b.onclick = () => { if (st.lang === b.dataset.lang) return; st.lang = b.dataset.lang; save(); langStatic(); all(); });
+langStatic(); all(); observe();
+}
+</script>
+</body>
+</html>
