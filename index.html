@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-70Zn7pzHvf9qPvr+r4vizZcZAhxenXgMMX+4Wm/nFHE=' 'sha256-lQKvVjP3ZpXFFd7IxuziaStI/SxMJMhukHViNaNInyM='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-70Zn7pzHvf9qPvr+r4vizZcZAhxenXgMMX+4Wm/nFHE=' 'sha256-zKZblUCwcXzwlW8471+YAyndrfpedPLF3Ro4JW++x5o='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Beijing. 28 days.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap">
@@ -541,10 +541,14 @@ $('p-fly').onclick = () => { st.fly = !st.fly; save(); plan(); };
 const pre = () => $('f-pre').innerHTML = [38, 200, 266, 1030, 4326].map(v => `<button class="chip" data-v="${v}">${m(v)}</button>`).join('');
 $('f-pre').addEventListener('click', e => { const v = e.target.dataset.v; if (v) { $('f-amt').value = Math.round(fromC(+v) * 100) / 100; fees(); } });
 $('f-new').onclick = () => { $('f-new').setAttribute('aria-checked', $('f-new').getAttribute('aria-checked') !== 'true'); fees(); };
+const fit = el => { el.style.fontSize = ''; const w = el.clientWidth, s = el.scrollWidth; if (s > w) el.style.fontSize = Math.max(16, Math.floor(parseFloat(getComputedStyle(el).fontSize) * w / s)) + 'px'; };
+const fitFees = () => ['f-ali', 'f-wx'].forEach(id => fit($(id)));
+addEventListener('resize', fitFees);
+document.fonts && document.fonts.ready.then(fitFees);
 function fees() {
   const a = toC(Math.max(+$('f-amt').value || 0, 0)), today = 0, isNew = $('f-new').getAttribute('aria-checked') === 'true';
   const ali = a > 200 ? a * .03 : 0, wx = (a <= 200 || (isNew && a + today <= 1000)) ? 0 : a * .03;
-  const put = (id, f, note) => { $(id).className = 'v num ' + (f ? 'no' : 'ok'); $(id).textContent = f ? '+' + m(f, 2) : t('Free'); $(id + '-n').textContent = note; };
+  const put = (id, f, note) => { $(id).className = 'v num ' + (f ? 'no' : 'ok'); $(id).textContent = f ? '+' + m(f, 2) : t('Free'); $(id + '-n').textContent = note; fit($(id)); };
   put('f-ali', ali, ali ? tf('3% of {a} is {b}', { a: m(a, 2), b: m(ali, 2) }) : tf('Up to {x} is free', { x: m(200) }));
   put('f-wx', wx, wx ? (isNew ? tf('Over the {x} daily free cap', { x: m(1000) }) : tf('3% of {a} is {b}', { a: m(a, 2), b: m(wx, 2) })) : (a <= 200 ? tf('Up to {x} is free', { x: m(200) }) : t('Covered by the new-card offer')));
 }
